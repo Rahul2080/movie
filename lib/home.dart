@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/second.dart';
 
 class home extends StatefulWidget {
@@ -54,7 +55,7 @@ class _homeState extends State<home> {
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Color(0xFF110E47),
-              fontSize: 16,
+              fontSize: 16.sp,
               fontFamily: 'Merriweather',
               fontWeight: FontWeight.w900,
               height: 0,
@@ -84,40 +85,43 @@ class _homeState extends State<home> {
                     'Now Showing',
                     style: TextStyle(
                       color: Color(0xFF110E46),
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontFamily: 'Merriweather',
                       fontWeight: FontWeight.w900,
-                      height: 0,
                       letterSpacing: 0.32,
                     ),
                   ),
                   SizedBox(
-                    width: 200,
+                    width: 170.w,
                   ),
                   Text(
                     'See more',
                     textAlign: TextAlign.right,
                     style: TextStyle(
                       color: Color(0xFFAAA8B0),
-                      fontSize: 10,
+                      fontSize: 10.sp,
                       fontFamily: 'Mulish',
                       fontWeight: FontWeight.w400,
-                      height: 0,
                       letterSpacing: 0.20,
                     ),
                   ),
                 ],
               ),
               SizedBox(
-                height: 340,
+                height: 300.h,
                 child: ListView.separated(
                   itemCount: movies.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return TextButton(
-                      onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (_)=>second())); },
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => second(
+                                  text: txt[index],text2:   ratetxt[index],
+                                )));
+                      },
                       child: Container(
-                        width: 200,
+                        width: 200.w,
                         decoration: ShapeDecoration(
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
@@ -128,7 +132,7 @@ class _homeState extends State<home> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                                width: 170,
+                                width: 170.w,
                                 child: Image.asset(
                                   movies[index],
                                   fit: BoxFit.cover,
@@ -139,7 +143,7 @@ class _homeState extends State<home> {
                                 txt[index],
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 14,
+                                  fontSize: 14.sp,
                                   fontFamily: 'Mulish',
                                   fontWeight: FontWeight.w700,
                                   height: 0,
@@ -148,7 +152,7 @@ class _homeState extends State<home> {
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 10.h,
                             ),
                             Row(
                               children: [
@@ -168,16 +172,15 @@ class _homeState extends State<home> {
                                   onRatingUpdate: (double value) {},
                                 ),
                                 SizedBox(
-                                  width: 10,
+                                  width: 10.w,
                                 ),
                                 Text(
                                   ratetxt[index],
                                   style: TextStyle(
                                     color: Color(0xFF9B9B9B),
-                                    fontSize: 12,
+                                    fontSize: 12.sp,
                                     fontFamily: 'Mulish',
                                     fontWeight: FontWeight.w400,
-                                    height: 0,
                                     letterSpacing: 0.24,
                                   ),
                                 )
@@ -190,49 +193,47 @@ class _homeState extends State<home> {
                   },
                   separatorBuilder: (BuildContext context, int index) {
                     return SizedBox(
-                      width: 20,
+                      width: 20.w,
                     );
                   },
                 ),
               ),
-              SizedBox(height: 22),
+              SizedBox(height: 22.h),
               Row(
                 children: [
                   Text(
                     'Popular',
                     style: TextStyle(
                       color: Color(0xFF110E47),
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontFamily: 'Merriweather',
                       fontWeight: FontWeight.w900,
-                      height: 0,
                       letterSpacing: 0.32,
                     ),
                   ),
-                  SizedBox(width: 250),
+                  SizedBox(width: 220.w),
                   Text(
                     'See more',
                     textAlign: TextAlign.right,
                     style: TextStyle(
                       color: Color(0xFFAAA8B0),
-                      fontSize: 10,
+                      fontSize: 10.sp,
                       fontFamily: 'Mulish',
                       fontWeight: FontWeight.w400,
-                      height: 0,
                       letterSpacing: 0.20,
                     ),
                   ),
                 ],
               ),
               SizedBox(
-                height: 500,
+                height: 500.h,
                 child: ListView.separated(
                   itemCount: verimage.length,
                   scrollDirection: Axis.vertical,
                   itemBuilder: (context, index) {
                     return Container(
-                      width: 60,
-                      height: 200,
+                      width: 60.w,
+                      height: 200.h,
                       decoration: ShapeDecoration(
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
@@ -244,27 +245,26 @@ class _homeState extends State<home> {
                           Image.asset(
                             verimage[index],
                           ),
-                          SizedBox(width: 15),
-                          Column(
+                          SizedBox(width: 15.w),
+                          Column(crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
                                 padding:
-                                    const EdgeInsets.only(top: 20, right: 100),
+                                    const EdgeInsets.only(top: 20),
                                 child: Text(
                                   vertext[index],
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 14,
+                                    fontSize: 14.sp,
                                     fontFamily: 'Mulish',
                                     fontWeight: FontWeight.w700,
-                                    height: 0,
                                     letterSpacing: 0.28,
                                   ),
                                 ),
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.only(right: 120, top: 10),
+                                    const EdgeInsets.only( top: 10),
                                 child: Row(
                                   children: [
                                     RatingBar.builder(
@@ -286,20 +286,19 @@ class _homeState extends State<home> {
                                       verratetext[index],
                                       style: TextStyle(
                                         color: Color(0xFF9B9B9B),
-                                        fontSize: 12,
+                                        fontSize: 12.sp,
                                         fontFamily: 'Mulish',
                                         fontWeight: FontWeight.w400,
-                                        height: 0,
                                         letterSpacing: 0.24,
                                       ),
                                     )
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 17),
+                              SizedBox(height: 17.h),
                               Container(
-                                width: 230,
-                                height: 30,
+                                width: 170.w,
+                                height: 30.h,
                                 decoration: ShapeDecoration(
                                   color: Colors.white,
                                   shape: RoundedRectangleBorder(
@@ -312,8 +311,8 @@ class _homeState extends State<home> {
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     return Container(
-                                      width: 70,
-                                      height: 15,
+                                      width: 60.w,
+                                      height: 15.h,
                                       decoration: ShapeDecoration(
                                         color: Colors.greenAccent,
                                         shape: RoundedRectangleBorder(
@@ -328,10 +327,9 @@ class _homeState extends State<home> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: Color(0xFF87A3E8),
-                                            fontSize: 8,
+                                            fontSize: 8.sp,
                                             fontFamily: 'Mulish',
                                             fontWeight: FontWeight.w700,
-                                            height: 0,
                                             letterSpacing: 0.16,
                                           ),
                                         ),
@@ -341,33 +339,30 @@ class _homeState extends State<home> {
                                   separatorBuilder:
                                       (BuildContext context, int index) {
                                     return SizedBox(
-                                      width: 6,
+                                      width: 6.w,
                                     );
                                   },
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 155),
-                                child: Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 18,
-                                      backgroundColor: Colors.white,
-                                      child: Icon(Icons.schedule_outlined),
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 18.r,
+                                    backgroundColor: Colors.white,
+                                    child: Icon(Icons.schedule_outlined),
+                                  ),
+                                  Text(
+                                    '1h 47m',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 12.sp,
+                                      fontFamily: 'Mulish',
+                                      fontWeight: FontWeight.w400,
+                                      height: 0,
+                                      letterSpacing: 0.24,
                                     ),
-                                    Text(
-                                      '1h 47m',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 12,
-                                        fontFamily: 'Mulish',
-                                        fontWeight: FontWeight.w400,
-                                        height: 0,
-                                        letterSpacing: 0.24,
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                  )
+                                ],
                               ),
                             ],
                           ),
@@ -377,7 +372,7 @@ class _homeState extends State<home> {
                   },
                   separatorBuilder: (BuildContext context, int index) {
                     return SizedBox(
-                      height: 20,
+                      height: 20.h,
                     );
                   },
                 ),
